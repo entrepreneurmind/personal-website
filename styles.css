@@ -34,10 +34,11 @@ h2{font:600 clamp(42px,6vw,74px)/.98 'Cormorant Garamond',serif;letter-spacing:-
 .bio{font-size:18px;color:var(--muted)}
 .bio p{margin-bottom:20px}
 .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-.card{background:rgba(255,255,255,.055);border:1px solid var(--line);border-radius:18px;padding:30px;min-height:290px}
+.card{background:rgba(255,255,255,.055);border:1px solid var(--line);border-radius:18px;padding:30px;min-height:290px;display:flex;flex-direction:column}
 .card-num{font-size:12px;color:var(--lilac);letter-spacing:.15em;margin-bottom:58px}
 .card h3{font:600 31px/1.05 'Cormorant Garamond',serif;margin-bottom:15px}
 .card p{color:var(--muted);font-size:15px}
+.card-logo{display:block;height:22px;width:auto;max-width:60%;margin-top:auto;padding-top:24px;opacity:.72}
 .quote{margin:30px 0 0;padding:68px;border-radius:24px;background:var(--gradient);position:relative;overflow:hidden}
 .quote p{font:italic 600 clamp(37px,5vw,64px)/1.02 'Cormorant Garamond',serif;max-width:900px;margin:0}
 .contact{display:grid;grid-template-columns:1.1fr .9fr;gap:70px;align-items:end;padding-bottom:90px}
