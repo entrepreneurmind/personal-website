@@ -7,9 +7,17 @@
   <meta name="description" content="Diese Seite gibt es nicht. Zurück zur Startseite von Yannik Hauser.">
   <meta name="robots" content="noindex">
   <link rel="stylesheet" href="/styles.css">
+  <script>
+  (function(){var d=document.documentElement,K='yh-site-theme';
+  try{var t=localStorage.getItem(K);if(t==='dark'||t==='light')d.dataset.theme=t}catch(e){}
+  function sync(){var dark=d.dataset.theme==='dark';document.querySelectorAll('.theme-toggle').forEach(function(b){b.setAttribute('aria-pressed',dark)})}
+  document.addEventListener('DOMContentLoaded',sync);
+  document.addEventListener('click',function(e){var b=e.target.closest&&e.target.closest('.theme-toggle');if(!b)return;d.dataset.theme=d.dataset.theme==='dark'?'light':'dark';try{localStorage.setItem(K,d.dataset.theme)}catch(err){}sync()});
+  })();
+  </script>
 </head>
 <body>
-  <header class="shell nav"><a class="mark" href="/">Yannik Hauser</a><nav class="nav-links" aria-label="Hauptnavigation"><a href="/">Startseite</a><a class="lang" href="/en/" lang="en">EN</a></nav></header>
+  <header class="shell nav"><a class="mark" href="/">Yannik Hauser</a><nav class="nav-links" aria-label="Hauptnavigation"><a href="/">Startseite</a><a class="lang" href="/en/" lang="en">EN</a><button class="theme-toggle" type="button" aria-pressed="false" aria-label="Zwischen hellem und dunklem Design wechseln" title="Design wechseln"><svg viewBox="0 0 20 20" width="15" height="15" aria-hidden="true" focusable="false"><circle cx="10" cy="10" r="8.2" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M10 1.8a8.2 8.2 0 0 1 0 16.4z" fill="currentColor"/></svg></button></nav></header>
   <main>
     <section class="shell hero">
       <div class="hero-copy">

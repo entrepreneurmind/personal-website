@@ -7,9 +7,17 @@
   <meta name="description" content="Yannik Hauser is an AI Consultant at atrete, extended board member at SwissAI and host of Want to be Entrepreneurs!">
   <link rel="canonical" href="https://yannik-hauser.com/en/">
   <link rel="stylesheet" href="/styles.css">
+  <script>
+  (function(){var d=document.documentElement,K='yh-site-theme';
+  try{var t=localStorage.getItem(K);if(t==='dark'||t==='light')d.dataset.theme=t}catch(e){}
+  function sync(){var dark=d.dataset.theme==='dark';document.querySelectorAll('.theme-toggle').forEach(function(b){b.setAttribute('aria-pressed',dark)})}
+  document.addEventListener('DOMContentLoaded',sync);
+  document.addEventListener('click',function(e){var b=e.target.closest&&e.target.closest('.theme-toggle');if(!b)return;d.dataset.theme=d.dataset.theme==='dark'?'light':'dark';try{localStorage.setItem(K,d.dataset.theme)}catch(err){}sync()});
+  })();
+  </script>
 </head>
 <body>
-  <header class="shell nav"><a class="mark" href="/en/">Yannik Hauser</a><nav class="nav-links" aria-label="Main navigation"><a href="#about">About</a><a href="#roles">Roles</a><a href="#contact">Contact</a><a class="lang" href="/" lang="de">DE</a></nav></header>
+  <header class="shell nav"><a class="mark" href="/en/">Yannik Hauser</a><nav class="nav-links" aria-label="Main navigation"><a href="#about">About</a><a href="#roles">Roles</a><a href="#contact">Contact</a><a class="lang" href="/" lang="de">DE</a><button class="theme-toggle" type="button" aria-pressed="false" aria-label="Switch between light and dark design" title="Switch design"><svg viewBox="0 0 20 20" width="15" height="15" aria-hidden="true" focusable="false"><circle cx="10" cy="10" r="8.2" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M10 1.8a8.2 8.2 0 0 1 0 16.4z" fill="currentColor"/></svg></button></nav></header>
   <main>
     <section class="shell hero"><div class="hero-copy"><div class="eyebrow">Speaker · AI Consultant · Podcast Host</div><h1>Understand <span class="gradient">technology.</span><br>Shape reality.</h1><p class="lede">I work at the intersection of AI hype and enterprise reality, driven by curiosity, pragmatic implementation and real examples.</p><div class="actions"><a class="button primary" href="#contact">Get in touch</a><a class="button" href="https://www.linkedin.com/in/yannikhauser/" rel="me">LinkedIn</a></div></div><div class="portrait-wrap"><img class="portrait" src="/assets/portrait.jpg" alt="Portrait of Yannik Hauser" width="2000" height="1334"></div></section>
     <div class="shell facts" aria-label="Profile"><div class="fact"><span>Based in</span>Zurich, Switzerland</div><div class="fact"><span>AI experience</span>More than 5 years</div><div class="fact"><span>Topics</span>AI, agents, entrepreneurship</div></div>
