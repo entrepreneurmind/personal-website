@@ -9,6 +9,7 @@
   <link rel="stylesheet" href="/styles.css">
   <script>
   (function(){var d=document.documentElement,K='yh-site-theme';
+  d.classList.add('js');if(!matchMedia('(prefers-reduced-motion: reduce)').matches)d.classList.add('motion');
   try{var t=localStorage.getItem(K);if(t==='dark'||t==='light')d.dataset.theme=t}catch(e){}
   function sync(){var dark=d.dataset.theme==='dark';document.querySelectorAll('.theme-toggle').forEach(function(b){b.setAttribute('aria-pressed',dark)})}
   document.addEventListener('DOMContentLoaded',sync);
@@ -17,21 +18,35 @@
   </script>
 </head>
 <body>
-  <header class="shell nav"><a class="mark" href="/">Yannik Hauser</a><nav class="nav-links" aria-label="Hauptnavigation"><a href="/">Startseite</a><a class="lang" href="/en/" lang="en">EN</a><button class="theme-toggle" type="button" aria-pressed="false" aria-label="Zwischen hellem und dunklem Design wechseln" title="Design wechseln"><svg viewBox="0 0 20 20" width="15" height="15" aria-hidden="true" focusable="false"><circle cx="10" cy="10" r="8.2" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M10 1.8a8.2 8.2 0 0 1 0 16.4z" fill="currentColor"/></svg></button></nav></header>
-  <main>
-    <section class="shell hero">
-      <div class="hero-copy">
-        <div class="eyebrow">Fehler 404</div>
-        <h1>Diese Seite gibt es <span class="gradient">nicht.</span></h1>
-        <p class="lede">Wahrscheinlich ein alter Link oder ein Tippfehler in der Adresse. Von der Startseite aus findest du alles, was hier zu finden ist.</p>
-        <div class="actions">
-          <a class="button primary" href="/">Zur Startseite</a>
-          <a class="button" href="/en/" lang="en">English version</a>
-        </div>
-        <p class="lede" lang="en" style="margin-top:34px;font-size:17px">This page does not exist. Head back to the <a href="/en/">English version</a>.</p>
+  <header class="site-nav">
+    <div class="wrap nav-pill">
+      <a class="brand" href="/" aria-label="Yannik Hauser, Startseite"><span class="mono-tile"><img src="/assets/brand/mono-white.png" alt="" width="20" height="22"></span><span class="brand-name">Yannik Hauser</span></a>
+      <nav class="nav-links" aria-label="Hauptnavigation"><a href="/">Startseite</a></nav>
+      <div class="nav-actions">
+        <a class="lang" href="/en/" lang="en" hreflang="en">EN</a>
+        <button class="theme-toggle" type="button" aria-pressed="false" aria-label="Zwischen hellem und dunklem Design wechseln" title="Design wechseln"><svg viewBox="0 0 20 20" width="15" height="15" aria-hidden="true" focusable="false"><circle cx="10" cy="10" r="8.2" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M10 1.8a8.2 8.2 0 0 1 0 16.4z" fill="currentColor"/></svg></button>
       </div>
-    </section>
+    </div>
+  </header>
+  <main class="notfound hero-track">
+    <div class="hero-glow" aria-hidden="true"><i class="a"></i><i class="b"></i></div>
+    <div class="wrap hero-copy">
+      <p class="eyebrow"><span class="num">404</span> Seite nicht gefunden</p>
+      <h1 class="display">Diese Seite gibt es <span class="accent">nicht</span></h1>
+      <p class="lede" style="margin-top:var(--s6)">Wahrscheinlich ein alter Link oder ein Tippfehler in der Adresse. Von der Startseite aus findest du alles, was hier zu finden ist.</p>
+      <div class="actions">
+        <a class="button primary" href="/">Zur Startseite <span class="arrow" aria-hidden="true">→</span></a>
+        <a class="button" href="/en/" lang="en">English version</a>
+      </div>
+      <p class="lede" lang="en" style="margin-top:var(--s8);font-size:16px">This page does not exist. Head back to the <a href="/en/">English version</a>.</p>
+    </div>
   </main>
-  <footer class="shell"><span>© 2026 Yannik Hauser</span><span>Explore. Build. Share.</span></footer>
+  <footer class="site-footer" style="margin-top:0">
+    <div class="wrap footer-grid">
+      <span>© 2026 Yannik Hauser</span>
+      <span class="tagline">Explore. Build. Share.</span>
+      <span></span>
+    </div>
+  </footer>
 </body>
 </html>
