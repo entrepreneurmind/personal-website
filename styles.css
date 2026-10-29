@@ -106,7 +106,7 @@ a{color:inherit}
 .nav-pill{pointer-events:auto;position:relative;display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:var(--s6);min-height:56px;padding:8px 8px 8px 10px;border-radius:var(--r-card);background:var(--glass);-webkit-backdrop-filter:blur(22px) saturate(1.18);backdrop-filter:blur(22px) saturate(1.18);box-shadow:inset 0 1px 0 rgba(255,255,255,.5)}
 .nav-pill:before{content:"";position:absolute;inset:0;padding:1px;border-radius:inherit;background:var(--glass-rim);-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;pointer-events:none}
 .brand{display:inline-flex;align-items:center;gap:10px;text-decoration:none;font:600 15px/1 var(--sans)}
-.mono-tile{display:grid;place-items:center;width:34px;height:34px;border-radius:11px;background:linear-gradient(140deg,#3b3486,#9a4fc7 65%,#c42a86)}
+.mono-tile{display:grid;place-items:center;width:34px;height:34px;border-radius:11px;background:#3b3486}
 .mono-tile img{width:20px;height:auto}
 .nav-links{display:flex;justify-content:center;gap:var(--s1)}
 .nav-links a{padding:8px 12px;border-radius:var(--r-pill);font-size:14px;font-weight:500;text-decoration:none;color:var(--body);transition:color var(--dur-fast) var(--ease),background-color var(--dur-fast) var(--ease)}
@@ -216,10 +216,7 @@ a{color:inherit}
 
 /* ---------- AgentOS: gepinnt, --step (0..4) kommt vom Scroll ---------- */
 .os-track{--step:4;position:relative}
-.motion .os-track.is-pinned{height:380vh;--step:0}
 .os-stage{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(32px,5vw,72px);align-items:center}
-.is-pinned .os-section{height:100%;padding:0}
-.is-pinned .os-stage{position:sticky;top:0;height:100vh;height:100svh;padding-top:72px}
 .os-phases{display:grid;gap:0;margin:var(--s8) 0 0;padding:0;list-style:none;counter-reset:ph}
 .os-phases li{border-top:1px solid var(--line)}
 .os-phases li:last-child{border-bottom:1px solid var(--line)}
@@ -229,9 +226,6 @@ a{color:inherit}
 .os-phases .d{grid-column:2;margin:6px 0 0;color:var(--body);font-size:15px;line-height:1.55}
 .os-phases li.active .t,.os-track:not(.is-pinned) .os-phases .t{color:var(--text)}
 .os-phases li.active .n{color:var(--brand)}
-.js .is-pinned .os-phases .d{display:grid;grid-template-rows:0fr;margin:0;opacity:0;transition:grid-template-rows var(--dur-enter) var(--ease),opacity var(--dur) var(--ease),margin var(--dur) var(--ease)}
-.js .is-pinned .os-phases .d>span{overflow:hidden}
-.js .is-pinned .os-phases li.active .d{grid-template-rows:1fr;opacity:1;margin-top:6px}
 
 .os-screen{position:relative;border-radius:var(--r-tile);padding:clamp(18px,2.4vw,30px);background:#06070e;color:#fff;overflow:hidden;isolation:isolate;border:1px solid rgba(255,255,255,.08)}
 .os-screen:before{content:"";position:absolute;inset:0;z-index:-1;background:radial-gradient(85% 95% at 78% 12%,rgba(196,42,134,.45),transparent 58%),radial-gradient(75% 85% at 12% 92%,rgba(91,75,208,.5),transparent 58%)}
@@ -328,6 +322,22 @@ a{color:inherit}
 
 /* ---------- 404 ---------- */
 .notfound{min-height:100vh;min-height:100svh;display:grid;align-items:center;padding:120px 0 64px;position:relative;overflow:clip}
+
+/* ---------- Mehr erfahren: AgentOS und Projekte, standardmaessig zugeklappt ---------- */
+.more{border-top:1px solid var(--line)}
+.more summary{list-style:none;cursor:pointer}
+.more summary::-webkit-details-marker{display:none}
+.more-bar{display:grid;grid-template-columns:1fr auto;align-items:center;column-gap:var(--s4);padding-block:var(--s8)}
+.more-title{font:500 clamp(28px,3.4vw,40px)/1.1 var(--serif);color:var(--text)}
+.more-sub{grid-row:2;margin-top:var(--s2);color:var(--muted);font-size:15px}
+.more-icon{grid-row:1/3;grid-column:2;position:relative;width:44px;height:44px;border:1px solid var(--line-strong);border-radius:50%;transition:border-color var(--dur) var(--ease),transform var(--dur) var(--ease)}
+.more-icon:before,.more-icon:after{content:"";position:absolute;inset:50% 13px auto;height:1.5px;margin-top:-.75px;background:currentColor}
+.more-icon:after{transform:rotate(90deg);transition:transform var(--dur) var(--ease)}
+.more summary:hover .more-icon{border-color:var(--brand)}
+.more[open] .more-icon:after{transform:rotate(0)}
+.more summary:focus-visible{outline:none}
+.more summary:focus-visible .more-icon{outline:2px solid var(--focus);outline-offset:3px}
+.more[open]>:not(summary){animation:enter var(--dur-enter) var(--ease) both}
 
 /* ---------- Reduced Motion: alles bleibt sichtbar, nichts bewegt sich ---------- */
 @media (prefers-reduced-motion:reduce){
