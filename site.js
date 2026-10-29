@@ -7,14 +7,10 @@
   // Pinning nur, wenn die gepinnte Szene wirklich in den Viewport passt.
   const roomy = matchMedia('(min-width: 861px) and (min-height: 600px)');
   const clamp = (v) => Math.max(0, Math.min(1, v));
-  // Vor den Szenen deklariert: syncPinning ruft setPhase schon beim Start auf.
-  const phases = [...document.querySelectorAll('.os-phases li')];
-  const osTrack = document.querySelector('.os-track');
 
   // ---------- Gepinnte Szenen: Scroll-Fortschritt als Custom Property ----------
   const scenes = [
-    { el: document.querySelector('.hero-track'), prop: '--p', scale: 1 },
-    { el: document.querySelector('.os-track'), prop: '--step', scale: 4, onStep: setPhase }
+    { el: document.querySelector('.hero-track'), prop: '--p', scale: 1 }
   ].filter((s) => s.el);
   let frame;
 
@@ -29,7 +25,6 @@
       if (!s.pinned || !s.visible) continue;
       const value = progress(s.el) * s.scale;
       s.el.style.setProperty(s.prop, value.toFixed(4));
-      if (s.onStep) s.onStep(value);
     }
   }
   function request() {
@@ -40,10 +35,7 @@
     for (const s of scenes) {
       s.pinned = pin;
       s.el.classList.toggle('is-pinned', pin);
-      if (!pin) {
-        s.el.style.removeProperty(s.prop);
-        if (s.onStep) s.onStep(s.scale);
-      }
+      if (!pin) s.el.style.removeProperty(s.prop);
     }
     request();
   }
@@ -61,7 +53,20 @@
   reduced.addEventListener('change', syncPinning);
   syncPinning();
 
-  // ---------- AgentOS: aktive Phase folgt dem Scroll, Klick scrollt zur Phase ----------
+  // ---------- Mehr erfahren: Sprunglinks auf AgentOS oder Projekte klappen den Bereich auf ----------
+  const more = document.querySelector('details.more');
+  function openForHash() {
+    const target = location.hash && document.getElementById(decodeURIComponent(location.hash.slice(1)));
+    if (more && target && more.contains(target) && !more.open) {
+      more.open = true;
+      target.scrollIntoView();
+    }
+  }
+  addEventListener('hashchange', openForHash);
+  openForHash();
+
+  // ---------- AgentOS: Klick auf eine Phase hebt sie hervor, Ruhe-Zustand ist die letzte Phase ----------
+  const phases = [...document.querySelectorAll('.os-phases li')];
   function setPhase(step) {
     const active = Math.min(phases.length - 1, Math.floor(step));
     phases.forEach((li, i) => {
@@ -69,13 +74,8 @@
       li.querySelector('button').setAttribute('aria-current', i === active ? 'step' : 'false');
     });
   }
-  phases.forEach((li, i) => li.querySelector('button').addEventListener('click', () => {
-    const s = scenes.find((x) => x.el === osTrack);
-    if (!s || !s.pinned) { setPhase(i); return; }
-    const distance = osTrack.offsetHeight - innerHeight;
-    const top = osTrack.getBoundingClientRect().top + scrollY;
-    scrollTo({ top: top + distance * ((i + 0.55) / phases.length), behavior: reduced.matches ? 'auto' : 'smooth' });
-  }));
+  phases.forEach((li, i) => li.querySelector('button').addEventListener('click', () => setPhase(i)));
+  if (phases.length) setPhase(phases.length - 1);
 
   // ---------- Ambient: Band und Puls laufen nur sichtbar ----------
   const ambient = [...document.querySelectorAll('[data-ambient]')];
